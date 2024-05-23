@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Post</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav>
+    <h1><a href="/">Deola's Blog</a></h1>
+    <ul>
+      <li id="auth-links"><a href="/logout" class="btn">Logout</a></li>
+      <li><a href="/create" class="btn">create post</a></li>
+    </ul>
+  </nav>
+
+  <script>
+
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const isLoggedIn = getCookie('is_loggedIn');
+      const authLinks = document.getElementById('auth-links');
+
+      if (isLoggedIn) {
+        authLinks.innerHTML = '<a href="/logout" class="btn">Logout</a>';
+      } else {
+        authLinks.innerHTML = '<a href="/login" class="btn">Login</a>';
+      }
+    });
+
+  </script>
+
+  <%- include('./partials/footer.ejs') %>
