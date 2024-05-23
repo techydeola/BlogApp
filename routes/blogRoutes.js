@@ -1,10 +1,14 @@
 const express = require('express');
-const { blog_post } = require('../controller/blogController');
+const { blogCreate_get, allPost_get } = require('../controller/blogController');
+const { requireAuth } = require('../middleware/authMiddleware')
 
 // use express router
 const router = express.Router();
 
-// blog post router
-router.post('/create', blog_post);
+// create blog post router
+router.get('/create', requireAuth, blogCreate_get);
+
+// all blog post
+router.get('/all-post', allPost_get);
 
 module.exports = router
