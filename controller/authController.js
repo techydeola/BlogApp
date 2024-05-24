@@ -2,7 +2,7 @@ const { User } = require('../model/user');
 const jwt = require('jsonwebtoken');
 
 // handle error
-handleError = (err) => {
+const handleError = (err) => {
   let errors = { email: '', password: '' };
 
   // login error handler
@@ -48,7 +48,14 @@ const login_get = (req, res) => {
 
 // signup controller handler for POST request
 const signup_post = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password, rePassword } = req.body;
+
+  // password mismatch
+  if (password !== rePassword) {
+    errors = { password: 'password does not match', rePassword: 'password does not match' };
+    res.status(401).json({ errors });
+    return;
+  }
 
   try {
     const user = await User.create({ firstName, lastName, email, password });
@@ -58,7 +65,7 @@ const signup_post = async (req, res) => {
   }
   catch(err) {
     const errors = handleError(err);
-    res.status(401).json({ errors });
+    res.status(400).json({ errors });
   }
 }
 
