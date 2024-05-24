@@ -18,9 +18,14 @@ const blogSchema = new Schema({
     type: String,
     required: [true, 'field cannot be blank']
   },
-  blogID: {
+  author: {
     type: Schema.Types.ObjectId,
     ref: 'User'
+  },
+  image: {
+    data: Buffer,
+    contentType: String,
+    required: [true, 'please upload an image']
   }
 }, { timestamps: true });
 
