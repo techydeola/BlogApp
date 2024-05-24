@@ -10,7 +10,7 @@ const blogSchema = new Schema({
     required: [true, 'field cannot be blank'],
     unique: [true, 'title already exist']
   },
-  title: {
+  snippet: {
     type: String,
     required: [true, 'field cannot be blank'],
   },
