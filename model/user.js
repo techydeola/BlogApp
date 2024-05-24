@@ -5,6 +5,14 @@ const bcrypt = require('bcrypt');
 
 // user Schema
 const userSchema = new Schema({
+  firstName: {
+    type: String,
+    required: [true, 'Please enter your first name'],
+  },
+  lastName: {
+    type: String,
+    require: [true, 'Please enter your last name']
+  },
   email: {
     type: String,
     required: [true, 'please enter an email'],
