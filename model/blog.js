@@ -25,7 +25,6 @@ const blogSchema = new Schema({
   image: {
     data: Buffer,
     contentType: String,
-    required: [true, 'please upload an image']
   }
 }, { timestamps: true });
 
