@@ -49,12 +49,30 @@ const blogCreate_post = async (req, res) => {
 }
 
 // get all post
-const allPost_get = (req, res) => {
-  res.status(200).render('home');
+const allPost_get = async (req, res) => {
+  try {
+    const blogs = await Blog.find().sort({ createdAt: -1 });
+    res.status(200).render('home', { blogs });
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
+// get single blog
+const singleBlog_get = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    res.status(200).render('detail', { blog });
+  }
+  catch (err) {
+    console.log(err);
+  }
 }
 
 module.exports = {
   blogCreate_get,
   allPost_get,
-  blogCreate_post
+  blogCreate_post,
+  singleBlog_get
 }
