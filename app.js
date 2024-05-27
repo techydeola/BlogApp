@@ -10,7 +10,7 @@ const app = express();
 // set view engine
 app.set('view engine', 'ejs');
 
-// connect to database and start listening to request
+// connect to database and listen to request
 dbURI = 'mongodb+srv://johnsamxy:aderex27@sampledb.7mhnb7h.mongodb.net/BlogApp';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology:true })
   .then(() => {
@@ -25,6 +25,6 @@ app.use(cookieParse());
 
 // routes
 app.use('*', checkUser);
-app.get('/', (req, res) => res.redirect('/all-post'));
 app.use(authRoutes);
 app.use(blogRoutes);
+app.get('/', (req, res) => res.redirect('/all-post'));
