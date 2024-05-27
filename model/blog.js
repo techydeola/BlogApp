@@ -6,7 +6,6 @@ const User = require('./user');
 const blogSchema = new Schema({
   title: {
     type: String,
-    lowercase: true,
     required: [true, 'field cannot be blank'],
     unique: [true, 'title already exist']
   },
