@@ -1,39 +1,42 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Post</title>
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-  <nav>
-    <h1><a href="/">Deola's Blog</a></h1>
-    <ul>
-      <li id="auth-links"><a href="/logout" class="btn">Logout</a></li>
-      <li><a href="/create" class="btn">create post</a></li>
-    </ul>
-  </nav>
+<%- include('./partials/header.ejs') %>
 
-  <script>
+<ul class="posts">
+    <% if (blogs.length > 0) { %>
+        <% blogs.forEach((data) => { %>
+            <li class="post">
+                <a href="/<%= data._id %>">
+                    <img
+                    src="data:image/<%=data.image.contentType%>;base64,
+                            <%=data.image.data.toString('base64')%>"
+                    />
+                    <div class="post__content">
+                        <h3><%= data.title %></h3>
+                        <p><%= data.snippet %></p>
+                    </div>
+                </a>
+            </li>
+        <% }); %>
+    <% } %>
+</ul>
 
-    function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-      return null;
-    }
-
+<script>
     document.addEventListener('DOMContentLoaded', () => {
-      const isLoggedIn = getCookie('is_loggedIn');
-      const authLinks = document.getElementById('auth-links');
+  const posts = document.querySelectorAll('.post');
 
-      if (isLoggedIn) {
-        authLinks.innerHTML = '<a href="/logout" class="btn">Logout</a>';
-      } else {
-        authLinks.innerHTML = '<a href="/login" class="btn">Login</a>';
-      }
+  posts.forEach(post => {
+    post.addEventListener('mousedown', () => {
+      post.classList.add('active');
     });
 
-  </script>
+    post.addEventListener('mouseup', () => {
+      post.classList.remove('active');
+    });
 
-  <%- include('./partials/footer.ejs') %>
+    post.addEventListener('mouseleave', () => {
+      post.classList.remove('active');
+    });
+  });
+});
+</script>
+
+<%- include('./partials/footer.ejs') %>

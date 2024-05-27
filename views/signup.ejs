@@ -2,25 +2,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signup</title>
+  <title>All Post</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <nav>
     <h1><a href="/">Deola's Blog</a></h1>
     <ul>
-      <li><a href="/login" class="btn">Log in</a></li>
+        <li><a href="/login" class="btn">Login</a></li>
     </ul>
   </nav>
 
 <form>
     <h2>Sign up</h2>
+    <label for="firstName">first name</label>
+    <input type="text" name="firstName" required>
+    <div class="firstName error"></div>
+    <label for="lastName">last name</label>
+    <input type="text" name="lastName" required>
+    <div class="lastName error"></div>
     <label for="email">Email</label>
     <input type="text" name="email" required>
     <div class="email error"></div>
     <label for="password">Password</label>
     <input type="password" name="password" required>
     <div class="password error"></div>
+    <label for="rePassword">re-enter password</label>
+    <input type="password" name="rePassword" required>
+    <div class="rePassword error"></div>
     <button>Sign up</button>
 </form>
 
@@ -28,6 +37,9 @@
     const form = document.querySelector('form');
     const emailError = document.querySelector('.email.error');
     const passwordError = document.querySelector('.password.error');
+    const rePasswordError = document.querySelector('.rePassword.error');
+    const firstNameError = document.querySelector('.firstName.error');
+    const lastNameError = document.querySelector('.lastName.error');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -35,21 +47,30 @@
       // reset errors
       emailError.textContent = '';
       passwordError.textContent = '';
+      rePasswordError.textContent = '';
+      firstNameError.textContent = '';
+      lastNameError.textContent = '';
 
       // get the values
+      const firstName = form.firstName.value
+      const lastName = form.lastName.value
       const email = form.email.value
       const password = form.password.value
+      const rePassword = form.rePassword.value
 
       try {
         const res = await fetch('/signup', {
           method: 'POST',
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify({ firstName, lastName, email, password, rePassword }),
           headers: { 'Content-Type': 'application/json' }
         });
         const data = await res.json();
         if (data.errors) {
+          firstNameError.textContent = data.errors.firstName;
+          lastNameError.textContent = data.errors.lastName;
           emailError.textContent = data.errors.email;
           passwordError.textContent = data.errors.password;
+          rePasswordError.textContent = data.errors.rePassword;
         }
         if (data.user) {
           location.assign('/');

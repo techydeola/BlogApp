@@ -2,14 +2,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>All Post</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <nav>
     <h1><a href="/">Deola's Blog</a></h1>
     <ul>
-      <li><a href="/signup" class="btn">Sign up</a></li>
+      <% if (user) { %>
+        <script>
+          (function() {
+            location.assign('/');
+          })();
+        </script>
+      <% } else { %>
+        <li><a href="/signup" class="btn">Signup</a></li>
+      <% } %>
     </ul>
   </nav>
 
@@ -18,10 +26,10 @@
     <label for="email">Email</label>
     <input type="text" name="email" required>
     <div class="email error"></div>
-    <label for="password">Email</label>
+    <label for="password">password</label>
     <input type="password" name="password" required>
     <div class="password error"></div>
-    <button>Login</button>
+    <button class="btn">Login</button>
 </form>
 
 <script>
@@ -47,7 +55,7 @@
           headers: { 'Content-Type': 'application/json' }
         });
         const data = await res.json();
-        console.log(data);
+        console.log(data.errors);
         if (data.errors) {
           emailError.textContent = data.errors.email;
           passwordError.textContent = data.errors.password;
