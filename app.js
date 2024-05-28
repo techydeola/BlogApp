@@ -4,14 +4,22 @@ const authRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const cookieParse = require('cookie-parser');
 const { checkUser } = require('./middleware/authMiddleware');
+require('dotenv').config();
 
 const app = express();
 
 // set view engine
 app.set('view engine', 'ejs');
 
+// auth data
+const username = encodeURIComponent(process.env.MONGO_USERNAME);
+const password = encodeURIComponent(process.env.MONGO_PASSWORD);
+const host = process.env.MONGO_HOST;
+const dbName = process.env.MONGO_DB;
+
+
 // connect to database and listen to request
-dbURI = 'mongodb+srv://johnsamxy:aderex27@sampledb.7mhnb7h.mongodb.net/BlogApp';
+const dbURI = `mongodb+srv://${username}:${password}@${host}/${dbName}`;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology:true })
   .then(() => {
     app.listen(3000, () => console.log('listening on port 3000'));
