@@ -22,15 +22,17 @@
 ``` cd BlogApp ```
 3. **Install dependencies**
 ``` npm install ```
-4. **Set up the enviroment variables**
+4. **create a "upload" folder**
+``` mkdir upload ```
+5. **Set up the enviroment variables**
 - create a `.env` file in the root directory and add the following:
 ``` MONGO_USERNAME=your_cluster_username ```
 ``` MONGO_PASSWORD=your_cluster_password ```
 ``` MONGO_HOST=host ```
 ``` MONGO_DB=database_name ```
-5. **Run the development server**
+6. **Run the development server**
 ``` npm start ```
-6. **Open your browser**
+7. **Open your browser**
 - Go to `http://localhost:3000`
 
 ## Usage
