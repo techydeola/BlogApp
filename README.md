@@ -40,8 +40,8 @@
 - Navigate to the "Create Post" page and write your content.
 
 ## Screenshots
-![Signup Page](https://ibb.co/tzskSJC)
-![Blog Page](https://ibb.co/8xTYSsR)
+![Signup Page](https://i.ibb.co/nBcZTLk/Screenshot-2024-05-28-at-17-30-53.png)
+![Blog Page](https://i.ibb.co/GMBHbp1/Screenshot-2024-05-28-at-17-31-16.png)
 
 ## Technologies
 - Frontend: Ejs
@@ -60,3 +60,4 @@
 
 ## Contact
 Created by [Johnson Adeola] - [johnsamxy@gmail.com] - feel free to contact me!
+
