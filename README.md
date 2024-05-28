@@ -18,18 +18,19 @@
 ## Installation
 1. **Clone the repository**
 ``` git clone https://github.com/techydeola/BlogApp ```
+2. **Change to project dierectory**
 ``` cd BlogApp ```
-2. **Install dependencies**
+3. **Install dependencies**
 ``` npm install ```
-3. **Set up the enviroment variables**
+4. **Set up the enviroment variables**
 - create a `.env` file in the root directory and add the following:
 ``` MONGO_USERNAME=your_cluster_username ```
 ``` MONGO_PASSWORD=your_cluster_password ```
 ``` MONGO_HOST=host ```
 ``` MONGO_DB=database_name ```
-4. **Run the development server**
+5. **Run the development server**
 ``` npm start ```
-5. **Open your browser**
+6. **Open your browser**
 - Go to `http://localhost:3000`
 
 ## Usage
