@@ -42,7 +42,7 @@
 - Navigate to the "Create Post" page and write your content.
 
 ## Screenshots
-![Signup Page](https://i.ibb.co/nBcZTLk/Screenshot-2024-05-28-at-17-30-53.png)
+![Signup Page](https://i.ibb.co/bHbsv6w/Screenshot-2024-05-28-at-17-30-53.png)
 ![Blog Page](https://i.ibb.co/GMBHbp1/Screenshot-2024-05-28-at-17-31-16.png)
 
 ## Technologies
@@ -62,4 +62,3 @@
 
 ## Contact
 Created by [Johnson Adeola] - [johnsamxy@gmail.com] - feel free to contact me!
-
