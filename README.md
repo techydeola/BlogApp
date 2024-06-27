@@ -1,6 +1,6 @@
-### BlogApp
+### Learnify
 
-<p> BlogApp is a blog application built with NodeJs. It allow user to create and view blog posts. The application also include user authentication.
+<p> Learnify is a blog application built with NodeJs. It allow user to create and view blog posts. The application also include user authentication.
 
 ## Table of Contents
 - [Features](#Features)
